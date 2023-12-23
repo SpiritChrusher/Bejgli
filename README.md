@@ -16,4 +16,5 @@ After the program is running, navigate to https://localhost:<port>/swagger/index
 
 # Try the app
 
-On the Swagger page /swagger/index.html is displayed. Select GET > Try it out > Execute.
+On the Swagger page /swagger/index.html is displayed. Select POST > Try it out > Execute.
+Update the Request body with custom values.
