@@ -1,8 +1,36 @@
-﻿var ArrayWriter = (string output, int maxNumber) =>
- Array.ForEach(Enumerable.Repeat(output, Random.Shared.Next(2, maxNumber))
- .ToArray(), Console.WriteLine);
+﻿var builder = WebApplication.CreateBuilder(args);
 
-var (output, maxNumber) = args.Length is 2 ? 
-(args[0], int.TryParse(args[1], out int result) ? result : 42) : ("Ez zselés?!", 69);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-ArrayWriter(output, maxNumber);
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.MapPost("/christmas", ([FromBody] ChristmasTextRequest request) =>
+{
+    if(request is null) {
+        return Results.BadRequest("Invalid request");
+    }
+
+    var numberOfTexts = request.MaxNumber > 1 ? request.MaxNumber : 42;
+
+    var christmasTexts = Enumerable.Repeat(
+        request.ChristmasText ?? "Bad user", Random.Shared.Next(2, numberOfTexts))
+        .ToList();
+    return Results.Ok(new ChrismasTextsDto(christmasTexts));
+})
+.WithName("GeChristmasText")
+.WithOpenApi();
+
+app.Run();
+
+record ChristmasTextRequest(string? ChristmasText, int MaxNumber);
+record ChrismasTextsDto(List<string> ChrismasTexts);

@@ -11,7 +11,9 @@ In the project directory, you can run:
 
 ### 'dotnet run'
 
-Runs the app with default values
-You can customize the output via adding the output string and the maximum number of times you want the program to write the value out.
+Runs the app in the browser.
+After the program is running, navigate to https://localhost:<port>/swagger/index.html, where <port> is a randomly chosen port number set at the project creation.
 
-### 'dotnet run customString 7'
+# Try the app
+
+On the Swagger page /swagger/index.html is displayed. Select GET > Try it out > Execute.
