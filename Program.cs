@@ -1,7 +1,8 @@
 ﻿var ArrayWriter = (string output, int maxNumber) =>
- Array.ForEach(Enumerable.Repeat(output, Random.Shared.Next(2, maxNumber)).ToArray(), Console.WriteLine);
+ Array.ForEach(Enumerable.Repeat(output, Random.Shared.Next(2, maxNumber))
+ .ToArray(), Console.WriteLine);
 
-if (!int.TryParse(args.Length is 0 ? string.Empty : args[0], out int result))
-    ArrayWriter("Ez zselés?!", 42);
-else
-    ArrayWriter("Ez zselés?!", result);
+var (output, maxNumber) = args.Length is 2 ? 
+(args[0], int.TryParse(args[1], out int result) ? result : 42) : ("Ez zselés?!", 69);
+
+ArrayWriter(output, maxNumber);

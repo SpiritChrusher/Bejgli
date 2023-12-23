@@ -12,3 +12,4 @@
 /Users/szabokristof/Projects/Console/Bejgli/obj/Debug/net8.0/Bejgli.pdb
 /Users/szabokristof/Projects/Console/Bejgli/obj/Debug/net8.0/Bejgli.genruntimeconfig.cache
 /Users/szabokristof/Projects/Console/Bejgli/obj/Debug/net8.0/ref/Bejgli.dll
+/Users/szabokristof/Projects/Console/Bejgli/obj/Debug/net8.0/Bejgli.sourcelink.json
